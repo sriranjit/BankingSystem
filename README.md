@@ -1,6 +1,6 @@
 **Problem: Simple Banking Application**
 
-Write a program to simulate basic banking operations like creating an account, checking the balance, depositing money, and withdrawing money.
+_Write a program to simulate basic banking operations like creating an account, checking the balance, depositing money, and withdrawing money._
 
 **Requirements:**\
 **Account Creation:** Prompt the user to enter a name and an initial deposit amount.
