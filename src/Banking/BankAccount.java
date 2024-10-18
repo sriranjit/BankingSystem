@@ -1,5 +1,8 @@
 package Banking;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Random;
 import java.util.Scanner;
@@ -9,6 +12,15 @@ public class BankAccount{
     HashMap<Integer, Account> hm = new HashMap<>();
     Random random = new Random();
     int accountNumber;
+    public void logTransaction(String transaction){
+        try{
+            FileWriter writer = new FileWriter("bank_transaction.txt",true);
+            writer.write(new Date()+" - "+transaction+"\n");
+            writer.close();
+        } catch (IOException e) {
+            System.out.println("An error occurred while writing to the file.");
+        }
+    }
     public void get(){
         System.out.print("Enter Your Account Number : ");
         accountNumber = sc.nextInt();
@@ -26,6 +38,7 @@ public class BankAccount{
         Account ac = new Account(accountNumber,name,balance);
         hm.put(accountNumber,ac);
         System.out.println("Account Created Successfully. You account number is : "+accountNumber);
+        logTransaction("Created Account : "+accountNumber+", Account Holder Name : "+name+", Initial Deposit : "+amount);
     }
     public void deposit(){
         get();
@@ -37,6 +50,7 @@ public class BankAccount{
             if(amount>=500){
                 acc.setBalance(acc.getBalance()+amount);
                 System.out.println("Deposit Successful. New Balance : "+acc.getBalance());
+                logTransaction("Deposited to Account :"+accountNumber+", Amount : "+amount+", Account Balance : "+acc.getBalance());
             }
             else{
                 System.out.println("Minimum Deposit : 500");
@@ -57,6 +71,7 @@ public class BankAccount{
                 if(acc.getBalance()-amount>=0){
                     acc.setBalance(acc.getBalance()-amount);
                     System.out.println("Withdraw Successful. New Balance : "+acc.getBalance());
+                    logTransaction("Withdrawn from Account :"+accountNumber+", Amount : "+amount+", Account Balance : "+acc.getBalance());
                 }
                 else{
                     System.out.println("Insufficient Balance. Current balance : "+acc.getBalance());
