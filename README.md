@@ -1,4 +1,4 @@
-**Problem: Simple Banking Application**
+# **Problem: Simple Banking Application**
 
 _Write a program to simulate basic banking operations like creating an account, checking the balance, depositing money, and withdrawing money._
 
