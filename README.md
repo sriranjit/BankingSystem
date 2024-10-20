@@ -1,71 +1,106 @@
-# Simple Banking Application
+# Banking System
 
-Write a program to simulate basic banking operations like creating an account, checking the balance, depositing money, and withdrawing money.
+## Overview
 
-## Requirements:
-### Account Creation:
-- Prompt the user to enter a name and an initial deposit amount.
-- Assign a unique account number to each new account.
-Operations:
+The Banking System project is a console-based application that allows users to manage their bank accounts. Users can create accounts, deposit and withdraw funds, and check their account balances. The application utilizes a MySQL database to store user account information and transaction records.
 
-### Deposit:
-- Allow the user to deposit money into their account.
+## Features
 
-### Withdraw:
-- Allow the user to withdraw money, but the withdrawal should not exceed the balance.
+- Create a new bank account
+- Deposit funds into an account
+- Withdraw funds from an account
+- Check the current balance of an account
+- Transaction logging to a text file
 
-### Check Balance:
-- Display the current balance of the account.
+## Technologies Used
 
-### Account Management:
-- Use a menu to select the operation (1. Create Account, 2. Deposit, 3. Withdraw, 4. Check Balance, 5. Exit).
+- Java
+- MySQL
+- JDBC (Java Database Connectivity)
 
-## Example:
+## Database Setup
 
-### Menu:
-```bash
-1. Create Account
-2. Deposit
-3. Withdraw
-4. Check Balance
-5. Exit
-```
+### MySQL Installation
 
-### Sample Run:
-```bash
-1. Create Account 
-   Enter name: John 
-   Enter initial deposit: 5000
-   Account created successfully. Your Account Number is: 1001
+1. **Install MySQL**: If you haven't already, download and install MySQL from the [official website](https://www.mysql.com/downloads/).
 
-2. Deposit
-   Enter account number: 1001
-   Enter deposit amount: 2000
-   Deposit successful. New balance: 7000
+### Create Database and Tables
 
-3. Withdraw
-   Enter account number: 1001
-   Enter withdrawal amount: 3000
-   Withdrawal successful. New balance: 4000
+1. **Log in to MySQL**: Open your command line interface and log in to MySQL:
 
-4. Check Balance
-   Enter account number: 1001
-   Account Holder Name : John
-   Current balance: 4000
+   ```bash
+   mysql -u root -p
+   ```
 
-5. Exit
-```
+   Enter your password when prompted.
 
-### Suggested Classes and Methods:
+2. **Create the database**: Execute the following command to create a new database:
 
-#### 1. BankAccount Class:
-- **Fields:** accountNumber, accountHolderName, balance\
-- **Methods:** deposit(), withdraw(), getBalance(), createAccount()\
-#### 2.Main Application Class:
-- main() method to display the menu and handle user input.
+   ```bash
+   CREATE DATABASE banking_system;
+   ```
+
+3. **Use the database**:
+
+   ```bash
+   USE banking_system;
+   ```
+
+4. **Create the tables**: Run the following SQL commands to create the necessary tables:
+
+   ```bash
+   CREATE TABLE users (
+   account_number INT PRIMARY KEY,
+   name VARCHAR(100) NOT NULL,
+   balance INT NOT NULL
+   );
+
+   CREATE TABLE transactions (
+   account_number INT NOT NULL,
+   transaction_type VARCHAR(50) NOT NULL,
+   amount INT NOT NULL,
+   FOREIGN KEY (account_number) REFERENCES users(account_number)
+   );
+   ```
+
+5. **Exit MySQL**:
+
+   ```bash
+   EXIT;
+   ```
+
+## Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/sriranjit/BankingSystem.git
+   cd BankingSystem
+   ```
+
+2. Compile the Java files:
+
+   ```bash
+   javac -d bin src/Banking/*.java src/Main.java
+   ```
+
+3. Run the application:
+
+   ```bash
+   java -cp bin Main
+   ```
+
+## Usage
+
+1. Run the program, and you'll be presented with a menu to select different banking operations.
+2. Follow the prompts to create an account, deposit, withdraw, or check your balance.
+
+## Logging
+
+All transactions are logged to a file named `bank_transaction.txt`, which will be created in the project directory upon the first transaction.
 
 ## Author
 
-- **Sri Ranjit M**  
-  [Github Profile](https://github.com/sriranjit)  
-  [sriranjitmohan26@gmail.com](mailto:sriranjitmohan26@gmail.com)
+Sri Ranjit M  
+Email: [sriranjitmohan26@gmail.com](mailto:sriranjitmohan26@gmail.com)
+GitHub: [sriranjit](https://github.com/sriranjit)
