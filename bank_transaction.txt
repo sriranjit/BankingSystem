@@ -1,3 +1,4 @@
 Sun Oct 20 23:34:45 IST 2024 - Created Account : 1416, Account Holder Name : SRI RANJIT MOHAN, Initial Deposit : 5000
 Sun Oct 20 23:35:10 IST 2024 - Deposited to Account :1416, Amount : 8000, Account Balance : 13000
 Sun Oct 20 23:44:55 IST 2024 - Withdrawn to Account :1416, Amount : 3000, Account Balance : 7000
+Mon Oct 21 12:58:31 IST 2024 - Withdrawn to Account :1416, Amount : 6000, Account Balance : 1000
